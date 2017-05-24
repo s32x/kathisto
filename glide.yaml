@@ -1,0 +1,3 @@
+package: github.com/sdwolfe32/kathisto
+import:
+- package: github.com/patrickmn/go-cache
