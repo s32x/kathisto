@@ -19,9 +19,8 @@ type Renderer interface {
 // phantomJS is a struct containing all dependencies needed to perform
 // HTML rendering and periodic response caching using PhantomJS
 type phantomJS struct {
-	cache     *cache.Cache
-	noopKey   string
-	userAgent string
+	cache              *cache.Cache
+	noopKey, userAgent string
 }
 
 // NewPJSRenderer generates a new PhantomJS Renderer that contains an

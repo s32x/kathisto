@@ -34,7 +34,7 @@ Due to the fact that PhantomJS seems to take slightly longer than headless chrom
 The BSD 3-clause License
 ========================
 
-Copyright (c) 2017, Steven Wolfe. All rights reserved.
+Copyright (c) 2018, Entrik LLC. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
