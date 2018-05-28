@@ -32,7 +32,12 @@ func main() {
 		go http.ListenAndServeTLS(":443", certFile, keyFile, nil)
 	}
 
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "80"
+	}
+
 	// Always run a basic http server
-	log.Println("Listening on port :80")
-	http.ListenAndServe(":80", nil)
+	log.Println("Listening on port :", port)
+	http.ListenAndServe(":"+port, nil)
 }
