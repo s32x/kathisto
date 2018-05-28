@@ -25,13 +25,6 @@ func main() {
 	rs := NewService(r, os.Getenv("STRICT_HOST"), pubDir)
 	http.HandleFunc("/", rs.Prerender)
 
-	// Spin up a TLS goroutine if a cert and key are found
-	certFile, keyFile := os.Getenv("CERT_FILE"), os.Getenv("KEY_FILE")
-	if certFile != "" && keyFile != "" {
-		log.Println("Listening on port :443")
-		go http.ListenAndServeTLS(":443", certFile, keyFile, nil)
-	}
-
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "80"
