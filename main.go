@@ -5,13 +5,9 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"time"
 )
 
-const (
-	version         = "0.2"
-	cacheExpiration = 12 * time.Hour
-)
+const version = "0.3"
 
 func main() {
 	log.Printf("Kathisto v%s - Server-Side rendering with Go/PhantomJS\n", version)
@@ -21,7 +17,7 @@ func main() {
 	}
 
 	// Create a PhantomJS renderer and attach the prerender func to /
-	r := NewPJSRenderer(cacheExpiration, fmt.Sprintf("Kathisto/%s", version))
+	r := NewPJSRenderer(fmt.Sprintf("Kathisto/%s", version))
 	rs := NewService(r, os.Getenv("STRICT_HOST"), pubDir)
 	http.HandleFunc("/", rs.Prerender)
 

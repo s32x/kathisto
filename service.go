@@ -20,7 +20,7 @@ type service struct {
 
 // NewService generates and returns a new Servicer
 func NewService(renderer Renderer, strictHost, pubDir string) Servicer {
-	return &service{renderer: renderer, strictHost: strictHost, pubDir: pubDir}
+	return &service{renderer, strictHost, pubDir}
 }
 
 // Prerender handles all requests to the static frontend. Depending on the
@@ -51,7 +51,7 @@ func (s *service) Prerender(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// If a NoOp
+	// If a NoOp or something with a querystring
 	if s.renderer.IsNoOp(r.URL.Query()) || strings.Contains(r.URL.String(), "?") {
 		log.Printf("Serving static index %s - %s\n", s.pubDir+"/index.html", r.UserAgent())
 		http.ServeFile(w, r, s.pubDir+"/index.html")

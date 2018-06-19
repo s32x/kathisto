@@ -6,8 +6,6 @@ import (
 	"net/url"
 	"os/exec"
 	"time"
-
-	"github.com/patrickmn/go-cache"
 )
 
 // Renderer is used for fully rendering html pages on the server
@@ -19,35 +17,45 @@ type Renderer interface {
 // phantomJS is a struct containing all dependencies needed to perform
 // HTML rendering and periodic response caching using PhantomJS
 type phantomJS struct {
-	cache              *cache.Cache
 	noopKey, userAgent string
+	cache              map[string][]byte
 }
 
 // NewPJSRenderer generates a new PhantomJS Renderer that contains an
 // in-memory cache that expires at the passed expiration
-func NewPJSRenderer(expiration time.Duration, userAgent string) Renderer {
-	return &phantomJS{noopKey: randSeq(10), userAgent: userAgent}
+func NewPJSRenderer(userAgent string) Renderer {
+	return &phantomJS{
+		noopKey:   randSeq(10),
+		userAgent: userAgent,
+		cache:     make(map[string][]byte),
+	}
 }
 
 // Render renders a page using PhantomJS and the script we provide it with
 func (p *phantomJS) Render(url string) ([]byte, error) {
-	// Assemble our PhantomJS command argument (a url that we want to return to
-	// the user in a pre-rendered fashion) and executes it on our PhantomJS open script
+	// Return any previously rendered cached bytes
+	if p.cache[url] != nil {
+		return p.cache[url], nil
+	}
+
+	// Assemble our PhantomJS command argument (a url that we want to return
+	// to the user in a pre-rendered fashion) and executes it on our PhantomJS
+	// open script
 	noopURL := fmt.Sprintf("%s?%s=%s", url, p.noopKey, "true")
 	page, err := exec.Command("phantomjs", "render.js", noopURL, p.userAgent).Output()
 	if err != nil {
 		return nil, err
 	}
+
+	// Cache and return the bytes that have been pre-rendered
+	p.cache[url] = page
 	return page, nil
 }
 
 // isNoOp is a method used to allow the Renderer to request a resource without
 // the request recursively reaching back and hitting the Renderer again
 func (p *phantomJS) IsNoOp(query url.Values) bool {
-	if query.Get(p.noopKey) == "true" {
-		return true
-	}
-	return false
+	return query.Get(p.noopKey) == "true"
 }
 
 // randSeq generates a random sequence of runes of fixed length n. This is used
