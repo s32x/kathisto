@@ -5,16 +5,18 @@ jobs:
     environment:
       - DOCKER_TAG: entrik/kathisto
     docker:
-      - image: circleci/golang:1.10.2
+      - image: circleci/golang:1.10.3
     steps:
       - checkout
       - run:
-          name: Download PhantomJS binary
-          command: |
-            curl -L https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 -O
-            bzip2 -d phantomjs-2.1.1-linux-x86_64.tar.bz2
-            tar xopf phantomjs-2.1.1-linux-x86_64.tar
-            cp phantomjs-2.1.1-linux-x86_64/bin/phantomjs ./
+          name: Install Glide
+          command: go get github.com/Masterminds/glide
+      - run:
+          name: Download vendored Go dependencies
+          command: make glide
+      - run:
+          name: Run unit tests
+          command: make test
       - run:
           name: Build Go binary
           command: env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o kathisto

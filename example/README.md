@@ -11,7 +11,7 @@ Unfortunately, the below html is all that is generally seen by search-engine cra
 
 <head>
     <meta charset="utf-8">
-    <title>Kathisto Demo</title>
+    <title>kathisto Demo</title>
 </head>
 
 <body>
@@ -21,7 +21,7 @@ Unfortunately, the below html is all that is generally seen by search-engine cra
 
 </html>
 ```
-The javascript `bundle.js` - _Most bots/crawlers don't take this into consideration_
+The javascript `bundle.js` - _Many bots/crawlers don't take this into consideration_
 ```
 document.getElementsByTagName("app-root")[0].innerHTML = "This is your javascript rendered website content!.";
 ```
@@ -35,7 +35,7 @@ What a typical bot/crawler will then see (specifically in the case of the above 
 
 <head>
     <meta charset="utf-8">
-    <title>Kathisto Demo</title>
+    <title>kathisto Demo</title>
 </head>
 
 <body>

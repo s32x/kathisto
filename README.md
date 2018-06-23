@@ -1,5 +1,7 @@
+Used in production at [https://trumail.io](https://trumail.io)
+
 # kathisto
-kathisto (greek for _render_) is a lightweight docker base image that performs full server-side rendering using PhantomJS in order to serve pre-rendered pages of your Angular2/4/React web-apps to search engine bots/crawlers.
+kathisto (greek for _render_) is a lightweight docker base image that performs full server-side rendering using Headless Chrome in order to serve pre-rendered pages of your Angular2/4/React web-apps to search engine bots/crawlers.
 
 This project was developed after I came to the realization that bots /crawlers were not indexing anything other than the head and un-rendered body of my Javascript based web-applications.
 
@@ -10,26 +12,16 @@ ADD dist/ /dist/
 ```
 
 ### Deploy it!
-HTTP :
 ```sh
 docker build myapp
 docker run --name myapp_container -p 80:80 myapp
 ```
-HTTP & HTTPS :
-```sh
-docker build myapp
-docker run --name myapp_container -p 80:80 -p 443:443 -e CERT_FILE=/certs/domain.crt -e KEY_FILE=/certs/domain.key myapp
-```
-If you decide you only want to serve ssl on port 443, you can easily remove the `-p 80:80`
 
 ### Example
 If you need further clarification on how kathisto operates or perhaps a concrete example check out [the example dir](example/).
 
-### Future Plans
-Due to the fact that PhantomJS seems to take slightly longer than headless chrome to render full pages, I'd like to implement headless chrome at some point.
-
 ### Credit
- * [PhantomJS](https://github.com/ariya/phantomjs) for Page rendering
+ * [Headless Chrome](https://developers.google.com/web/updates/2017/04/headless-chrome) for Page rendering
 
 The BSD 3-clause License
 ========================
@@ -46,7 +38,7 @@ are permitted provided that the following conditions are met:
    this list of conditions and the following disclaimer in the documentation
    and/or other materials provided with the distribution.
 
- - Neither the name of Kathisto nor the names of its contributors may
+ - Neither the name of kathisto nor the names of its contributors may
    be used to endorse or promote products derived from this software without
    specific prior written permission.
 

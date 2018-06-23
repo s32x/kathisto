@@ -1,0 +1,16 @@
+hash: cc40e29b2773b707fe6db598ff4f67b91cf34930a8764359be707783e766ee03
+updated: 2018-06-23T13:39:22.270501-07:00
+imports: []
+testImports:
+- name: github.com/davecgh/go-spew
+  version: 8991bc29aa16c548c550c7ff78260e27b9ab7c73
+  subpackages:
+  - spew
+- name: github.com/pmezard/go-difflib
+  version: 792786c7400a136282c1664665ae0a8db921c6c2
+  subpackages:
+  - difflib
+- name: github.com/stretchr/testify
+  version: f35b8ab0b5a2cef36673838d662e249dd9c94686
+  subpackages:
+  - assert
