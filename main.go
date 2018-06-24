@@ -11,7 +11,7 @@ import (
 )
 
 var (
-	version   = "0.4"
+	version   = "0.5"
 	userAgent = fmt.Sprintf("kathisto/%s", version)
 	pubDir    = getEnv("PUBLIC_ADDR", "/dist")
 	host      = getEnv("HOST", "")
