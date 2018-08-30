@@ -1,7 +1,6 @@
-Used in production at [https://trumail.io](https://trumail.io)
+# `kathisto`
 
-# kathisto
-kathisto (greek for _render_) is a lightweight docker base image that performs full server-side rendering using Headless Chrome in order to serve pre-rendered pages of your Angular2/4/React web-apps to search engine bots/crawlers.
+kathisto (greek for _render_) is a lightweight docker base image that performs full server-side rendering using Headless Chrome in order to serve pre-rendered pages of your Angular/React web-apps to search engine bots/crawlers.
 
 This project was developed after I came to the realization that bots /crawlers were not indexing anything other than the head and un-rendered body of my Javascript based web-applications.
 

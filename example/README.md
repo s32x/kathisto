@@ -26,7 +26,7 @@ The javascript `bundle.js` - _Many bots/crawlers don't take this into considerat
 document.getElementsByTagName("app-root")[0].innerHTML = "This is your javascript rendered website content!.";
 ```
 ## The solution
-Angular and React both offer different software/Node server-side rendering packages (ex Universal) that I'm sure work great. However because I was unable to get Universal working on my Angular4 applications, I decided to build a middleware in Go that rendered the content using PhantomJS, cache it on my server, and serve the cached pre-rendered pages from our Go/PhantomJS middleware.
+Angular and React both offer different software/Node server-side rendering packages (ex Universal) that I'm sure work great. However because I was unable to get Universal working on my Angular applications, I decided to build a middleware in Go that rendered the content using Headless Chrome, cache it on my server, and serve the cached pre-rendered pages from our Go/Chrome middleware.
 
 What a typical bot/crawler will then see (specifically in the case of the above `/dist/` files) is the following...
 ```
