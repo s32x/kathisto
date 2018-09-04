@@ -1,11 +1,11 @@
 version: 2
 jobs:
   build:
-    working_directory: /go/src/github.com/entrik/kathisto
+    working_directory: /go/src/github.com/starboy/kathisto
     environment:
-      - DOCKER_TAG: entrik/kathisto
+      - DOCKER_TAG: sdwolfe32/kathisto
     docker:
-      - image: circleci/golang:1.10.3
+      - image: circleci/golang:1.11
     steps:
       - checkout
       - run:

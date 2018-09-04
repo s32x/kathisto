@@ -1,2 +1,2 @@
-FROM entrik/kathisto
+FROM sdwolfe32/kathisto
 ADD dist/ /dist/

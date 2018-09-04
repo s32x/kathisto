@@ -18,5 +18,5 @@ build:
 	-docker rmi kathisto
 	-rm -r kathisto
 	env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o kathisto
-	docker build --no-cache -t entrik/kathisto .
+	docker build --no-cache -t sdwolfe32/kathisto .
 	rm -r kathisto

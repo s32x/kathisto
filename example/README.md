@@ -49,7 +49,7 @@ This leaves the search-engine to make better decisions on where to index and ran
 ## How to use
 The dockerfile is very simple...
 ```
-FROM entrik/kathisto
+FROM sdwolfe32/kathisto
 ADD dist/ /dist/
 ```
 As you can see all that needs to happen is you need to build a new image containing your `/dist/` folder.

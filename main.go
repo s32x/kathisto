@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/entrik/kathisto/renderer"
-	"github.com/entrik/kathisto/service"
+	"github.com/starboy/kathisto/renderer"
+	"github.com/starboy/kathisto/service"
 )
 
 var (
