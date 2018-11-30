@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/starboy/kathisto/renderer"
+	"github.com/s32x/kathisto/renderer"
 )
 
 // Service contains all dependencies needed for a Servicer

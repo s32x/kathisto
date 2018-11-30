@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: /go/src/github.com/starboy/kathisto
+    working_directory: /go/src/github.com/s32x/kathisto
     environment:
       - DOCKER_TAG: sdwolfe32/kathisto
     docker:
