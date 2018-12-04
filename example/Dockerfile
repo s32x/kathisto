@@ -1,2 +1,2 @@
-FROM sdwolfe32/kathisto
+FROM s32x/kathisto
 ADD dist/ /dist/

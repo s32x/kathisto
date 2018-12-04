@@ -1,22 +1,18 @@
-NOVENDOR_PATH = $$(glide novendor)
-.PHONY: test
-
-glide:
-	-rm glide.lock
+deps:
+	-rm Gopkg.toml
+	-rm Gopkg.lock
 	-rm -r vendor
-	glide cache-clear
-	glide install
-
+	dep init
 test:
 	go clean
-	go test ${NOVENDOR_PATH}
-
-build:
-	make glide
+	go test ./...
+run:
+	go run main.go
+deploy:
+	make deps
 	make test
-	-docker rmi ubuntu
-	-docker rmi kathisto
-	-rm -r kathisto
-	env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o kathisto
-	docker build --no-cache -t sdwolfe32/kathisto .
-	rm -r kathisto
+	env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o bin/server
+	heroku container:login
+	heroku container:push web -a ipdatainfo
+	heroku container:release web -a ipdatainfo
+	rm -r bin

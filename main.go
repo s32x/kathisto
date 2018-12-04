@@ -1,41 +1,27 @@
-package main
+package main /* import "s32x.com/kathisto" */
 
 import (
 	"fmt"
-	"log"
-	"net/http"
 	"os"
 
-	"github.com/s32x/kathisto/renderer"
-	"github.com/s32x/kathisto/service"
+	"s32x.com/kathisto/api"
 )
 
 var (
-	version   = "0.4"
+	version   = "0.5"
 	userAgent = fmt.Sprintf("kathisto/%s", version)
-	pubDir    = getEnv("PUBLIC_ADDR", "/dist")
-	host      = getEnv("HOST", "")
-	port      = getEnv("PORT", "80")
+	pubDir    = getenv("PUBLIC_ADDR", "/dist")
+	host      = getenv("HOST", "")
+	port      = getenv("PORT", "80")
 )
 
-func main() {
-	log.Printf("kathisto v%s - Server-Side rendering with Go/Headless Chrome\n", version)
+func main() { api.Start(version, userAgent, pubDir, host, port) }
 
-	// Create a Chrome Renderer and bind the Render func to /
-	r := renderer.NewChromeRenderer(userAgent)
-	rs := service.NewService(r, host, pubDir)
-	http.HandleFunc("/", rs.Render)
-
-	// Always run a basic http server
-	log.Println("Listening on port :", port)
-	http.ListenAndServe(":"+port, nil)
-}
-
-// getEnv retrieves variables from the environment and falls
-// back to a passed fallback variable if it isn't set
-func getEnv(key, fallback string) string {
+// getenv retrieves a variable from the environment and falls back to a passed
+// default value if the key doesn't exist
+func getenv(key, def string) string {
 	if value, ok := os.LookupEnv(key); ok {
 		return value
 	}
-	return fallback
+	return def
 }

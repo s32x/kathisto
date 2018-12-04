@@ -1,4 +1,4 @@
-package service
+package service /* import "s32x.com/kathisto/service" */
 
 import (
 	"testing"

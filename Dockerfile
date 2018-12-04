@@ -1,4 +1,4 @@
 FROM ubuntu:latest
 RUN apt-get update && apt-get install -yq chromium-browser
-ADD kathisto /usr/local/bin/kathisto
-CMD kathisto
+ADD bin/server /usr/local/bin/server
+CMD server

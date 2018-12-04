@@ -1,25 +1,19 @@
 version: 2
 jobs:
   build:
-    working_directory: /go/src/github.com/s32x/kathisto
+    working_directory: /go/src/s32x.com/kathisto
     environment:
-      - DOCKER_TAG: sdwolfe32/kathisto
+      - DOCKER_TAG: s32x/kathisto
     docker:
-      - image: circleci/golang:1.11
+      - image: circleci/golang:1.11.2
     steps:
       - checkout
-      - run:
-          name: Install Glide
-          command: go get github.com/Masterminds/glide
-      - run:
-          name: Download vendored Go dependencies
-          command: make glide
       - run:
           name: Run unit tests
           command: make test
       - run:
-          name: Build Go binary
-          command: env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o kathisto
+          name: Build binary for Alpine linux
+          command: env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o bin/server
       - setup_remote_docker
       - run:
           name: Build Docker image with binary

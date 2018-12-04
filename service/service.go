@@ -1,10 +1,10 @@
-package service
+package service /* import "s32x.com/kathisto/service" */
 
 import (
 	"net/http"
 	"strings"
 
-	"github.com/s32x/kathisto/renderer"
+	"s32x.com/kathisto/renderer"
 )
 
 // Service contains all dependencies needed for a Servicer
