@@ -6,7 +6,7 @@ This project was developed after I came to the realization that bots /crawlers w
 
 ### Your Dockerfile
 ```sh
-FROM sdwolfe32/kathisto:latest
+FROM s32x/kathisto:latest
 ADD dist/ /dist/
 ```
 
