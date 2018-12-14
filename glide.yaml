@@ -1,0 +1,6 @@
+package: s32x.com/kathisto
+import: []
+testImport:
+- package: github.com/stretchr/testify
+  subpackages:
+  - assert

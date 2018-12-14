@@ -5,7 +5,7 @@ jobs:
     environment:
       - DOCKER_TAG: s32x/kathisto
     docker:
-      - image: circleci/golang:1.11.2
+      - image: circleci/golang:1.11.3
     steps:
       - checkout
       - run:
