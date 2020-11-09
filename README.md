@@ -25,7 +25,7 @@ If you need further clarification on how kathisto operates or perhaps a concrete
 The BSD 3-clause License
 ========================
 
-Copyright (c) 2018, Steven Wolfe. All rights reserved.
+Copyright (c) 2020, s32x. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
