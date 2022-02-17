@@ -1,10 +1,10 @@
-package main /* import "s32x.com/kathisto" */
+package main
 
 import (
 	"fmt"
 	"os"
 
-	"s32x.com/kathisto/api"
+	"github.com/s32x/kathisto/api"
 )
 
 var (

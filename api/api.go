@@ -1,11 +1,11 @@
-package api /* import "s32x.com/kathisto/api" */
+package api
 
 import (
 	"log"
 	"net/http"
 
-	"s32x.com/kathisto/renderer"
-	"s32x.com/kathisto/service"
+	"github.com/s32x/kathisto/renderer"
+	"github.com/s32x/kathisto/service"
 )
 
 // Start starts the kathisto API service using the passed params

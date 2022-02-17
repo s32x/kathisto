@@ -1,4 +1,4 @@
-package renderer /* import "s32x.com/kathisto/renderer" */
+package renderer
 
 import (
 	"bytes"
